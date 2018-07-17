@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.qws</groupId>
+    <artifactId>cloud</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.10.RELEASE</version>
+        <!--始终从仓库中获取-->
+        <relativePath/>
+    </parent>
+
+    <modules>
+        <module>erueak</module>
+        <module>zuul</module>
+        <module>producer</module>
+        <module>common</module>
+    </modules>
+
+    <properties>
+        <!--基础属性定义-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--编码格式-->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--jdk版本-->
+        <java.version>1.8</java.version>
+        <!--cloud版本-->
+        <spring-cloud.version>Edgware.SR2</spring-cloud.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
+        <!--json包 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.45</version>
+        </dependency>
+
+        <!--mysql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!--连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+
+        <!--logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <profiles>
+
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <project.env>dev</project.env>
+                <db.driverClassName>com.mysql.jdbc.Driver</db.driverClassName>
+                <db.url>jdbc:mysql://123/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;characterSetResults=utf8&amp;amp;zeroDateTimeBehavior=convertToNull</db.url>
+                <db.username>123</db.username>
+                <db.password>123</db.password>
+                <db.initialSize>5</db.initialSize>
+                <db.minIdle>5</db.minIdle>
+                <db.maxActive>20</db.maxActive>
+                <db.maxWait>60000</db.maxWait>
+                <db.timeBetweenEvictionRunsMillis>60000</db.timeBetweenEvictionRunsMillis>
+                <db.minEvictableIdleTimeMillis>300000</db.minEvictableIdleTimeMillis>
+                <db.validationQuery>SELECT 1 FROM DUAL</db.validationQuery>
+                <db.testWhileIdle>true</db.testWhileIdle>
+                <db.testOnBorrow>false</db.testOnBorrow>
+                <db.testOnReturn>false</db.testOnReturn>
+                <db.poolPreparedStatements>false</db.poolPreparedStatements>
+                <db.maxPoolPreparedStatementPerConnectionSize>20</db.maxPoolPreparedStatementPerConnectionSize>
+                <db.filters>logback</db.filters>
+                <db.connectionProperties>druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</db.connectionProperties>
+                <!--redis -->
+                <redis.host>123</redis.host>
+                <redis.password>123</redis.password>
+                <redis.port>6379</redis.port>
+                <redis.usePool>true</redis.usePool>
+                <redis.timeout>500</redis.timeout>
+                <redis.maxIdle>200</redis.maxIdle>
+                <redis.maxTotal>300</redis.maxTotal>
+                <redis.maxActive>1024</redis.maxActive>
+                <redis.maxWait>1000</redis.maxWait>
+                <redis.maxWaitMillis>1000</redis.maxWaitMillis>
+                <redis.testOnBorrow>true</redis.testOnBorrow>
+                <redis.testOnReturn>true</redis.testOnReturn>
+            </properties>
+        </profile>
+
+
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <project.env>dev</project.env>
+                <db.driverClassName>com.mysql.jdbc.Driver</db.driverClassName>
+                <db.url>jdbc:mysql://123/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;characterSetResults=utf8&amp;amp;zeroDateTimeBehavior=convertToNull</db.url>
+                <db.username>123</db.username>
+                <db.password>123</db.password>
+                <db.initialSize>5</db.initialSize>
+                <db.minIdle>5</db.minIdle>
+                <db.maxActive>20</db.maxActive>
+                <db.maxWait>60000</db.maxWait>
+                <db.timeBetweenEvictionRunsMillis>60000</db.timeBetweenEvictionRunsMillis>
+                <db.minEvictableIdleTimeMillis>300000</db.minEvictableIdleTimeMillis>
+                <db.validationQuery>SELECT 1 FROM DUAL</db.validationQuery>
+                <db.testWhileIdle>true</db.testWhileIdle>
+                <db.testOnBorrow>false</db.testOnBorrow>
+                <db.testOnReturn>false</db.testOnReturn>
+                <db.poolPreparedStatements>false</db.poolPreparedStatements>
+                <db.maxPoolPreparedStatementPerConnectionSize>20</db.maxPoolPreparedStatementPerConnectionSize>
+                <db.filters>logback</db.filters>
+                <db.connectionProperties>druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</db.connectionProperties>
+                <!--redis -->
+                <redis.host>123</redis.host>
+                <redis.password>123</redis.password>
+                <redis.port>6379</redis.port>
+                <redis.usePool>true</redis.usePool>
+                <redis.timeout>500</redis.timeout>
+                <redis.maxIdle>200</redis.maxIdle>
+                <redis.maxTotal>300</redis.maxTotal>
+                <redis.maxActive>1024</redis.maxActive>
+                <redis.maxWait>1000</redis.maxWait>
+                <redis.maxWaitMillis>1000</redis.maxWaitMillis>
+                <redis.testOnBorrow>true</redis.testOnBorrow>
+                <redis.testOnReturn>true</redis.testOnReturn>
+            </properties>
+        </profile>
+
+    </profiles>
+
+</project>

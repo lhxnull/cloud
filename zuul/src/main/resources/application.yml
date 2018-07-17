@@ -47,5 +47,7 @@ security:
     enabled: false
 zuul:
   addHostHeader: true
-  debug:
-    request: true
+  routes:
+    sinogold-message:
+      service-id: producer
+      path: /producer/**
