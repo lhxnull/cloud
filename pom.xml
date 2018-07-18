@@ -48,17 +48,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <optional>true</optional>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,6 +90,7 @@
     </dependencies>
 
     <dependencyManagement>
+        <!--在这里面配置的依赖不会主动加入到项目中-->
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -116,9 +113,9 @@
             <properties>
                 <project.env>dev</project.env>
                 <db.driverClassName>com.mysql.jdbc.Driver</db.driverClassName>
-                <db.url>jdbc:mysql://123/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;characterSetResults=utf8&amp;amp;zeroDateTimeBehavior=convertToNull</db.url>
-                <db.username>123</db.username>
-                <db.password>123</db.password>
+                <db.url>jdbc:mysql://192.168.88.198/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;characterSetResults=utf8&amp;amp;zeroDateTimeBehavior=convertToNull</db.url>
+                <db.username>root</db.username>
+                <db.password>123456</db.password>
                 <db.initialSize>5</db.initialSize>
                 <db.minIdle>5</db.minIdle>
                 <db.maxActive>20</db.maxActive>
@@ -156,11 +153,11 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <project.env>dev</project.env>
+                <project.env>prod</project.env>
                 <db.driverClassName>com.mysql.jdbc.Driver</db.driverClassName>
-                <db.url>jdbc:mysql://123/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;characterSetResults=utf8&amp;amp;zeroDateTimeBehavior=convertToNull</db.url>
-                <db.username>123</db.username>
-                <db.password>123</db.password>
+                <db.url>jdbc:mysql://192.168.88.198/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;characterSetResults=utf8&amp;amp;zeroDateTimeBehavior=convertToNull</db.url>
+                <db.username>root</db.username>
+                <db.password>123456</db.password>
                 <db.initialSize>5</db.initialSize>
                 <db.minIdle>5</db.minIdle>
                 <db.maxActive>20</db.maxActive>

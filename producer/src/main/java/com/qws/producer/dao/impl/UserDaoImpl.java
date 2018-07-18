@@ -2,7 +2,6 @@ package com.qws.producer.dao.impl;
 
 import com.qws.producer.dao.UserDao;
 import com.qws.producer.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -15,11 +14,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+    private final  JdbcTemplate jdbcTemplate;
+
+    public UserDaoImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     @Override
     public User selectById(Integer id) {
-        String sql ="select *  from User  where id = ?";
-        return  jdbcTemplate.queryForObject(sql,new Object[]{id} ,new BeanPropertyRowMapper<>());
+        String sql ="select *1  from qws_user  where id = ?";
+        return  jdbcTemplate.queryForObject(sql,new Object[]{id} ,new BeanPropertyRowMapper<>(User.class));
     }
 }

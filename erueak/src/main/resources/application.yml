@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: erueak
+  profiles:
+    active: @project.env@
 eureka:
   client:
     #是否注册到Eureka中
