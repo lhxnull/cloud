@@ -10,5 +10,5 @@ import com.qws.producer.entity.User;
 
 public interface UserDao {
 
-     User  selectById(Integer  id);
+     User  selectById(Integer id);
 }

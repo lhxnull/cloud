@@ -18,7 +18,6 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public void updateById() {
         departmentDao.updateById();
-        int i=1/0;
         departmentDao.updateBy2Id();
     }
 

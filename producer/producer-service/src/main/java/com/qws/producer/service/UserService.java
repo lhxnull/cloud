@@ -9,5 +9,5 @@ import com.qws.producer.entity.User;
  */
 public interface UserService {
 
-    User selectById(Integer  id);
+    User selectById(Integer id);
 }

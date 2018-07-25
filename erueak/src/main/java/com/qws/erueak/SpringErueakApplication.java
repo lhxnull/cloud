@@ -15,4 +15,5 @@ public class SpringErueakApplication {
         public static void main(String[] args) {
             SpringApplication.run(SpringErueakApplication.class, args);
         }
+
 }

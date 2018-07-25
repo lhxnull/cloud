@@ -5,3 +5,9 @@ log.txt
 catalina*
 
 
+将删除 common/src/main/resources/
+将删除 common/src/test/
+将删除 erueak/src/test/
+将删除 producer/dependency-reduced-pom.xml
+将删除 producer/src/test/
+将删除 zuul/src/test/

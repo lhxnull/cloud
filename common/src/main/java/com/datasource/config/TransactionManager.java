@@ -18,7 +18,7 @@ import java.util.Map;
 
 /**
  * @author qiwenshuai
- * @description 注解式事务配置
+ * @description 注解式事务配置,后期要抽象出来，有默认的拦截配置，也可以让用户实现自己的拦截配置。
  * @since 18-7-18 14:56 by jdk 1.8
  */
 @Aspect
