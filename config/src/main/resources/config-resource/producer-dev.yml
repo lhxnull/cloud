@@ -6,24 +6,24 @@ spring:
        enabled: ALWAYS
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: '@db.url@'
-    username: '@db.username@'
-    password: '@db.password@'
+    url: jdbc:mysql://192.168.88.190/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;characterSetResults=utf8&amp;amp;zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
-    initialSize: '@db.initialSize@' # 初始化大小
-    minIdle: '@db.minIdle@'
-    maxActive: '@db.maxActive@'
-    maxWait: '@db.maxWait@' # 配置获取连接等待超时的时间
-    timeBetweenEvictionRunsMillis: '@db.timeBetweenEvictionRunsMillis@' # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-    minEvictableIdleTimeMillis: '@db.minEvictableIdleTimeMillis@'  # 配置一个连接在池中最小生存的时间，单位是毫秒
-    validationQuery: '@db.validationQuery@'
-    testWhileIdle: '@db.testWhileIdle@'
-    testOnBorrow: '@db.testOnBorrow@'
-    testOnReturn: '@db.testOnReturn@'
-    poolPreparedStatements: '@db.poolPreparedStatements@' # 打开PSCache，并且指定每个连接上PSCache的大小
-    maxPoolPreparedStatementPerConnectionSize: '@db.maxPoolPreparedStatementPerConnectionSize@'
-    filters: '@db.filters@'
-    connectionProperties: '@db.connectionProperties@'
+    initialSize: 5 # 初始化大小
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000 # 配置获取连接等待超时的时间
+    timeBetweenEvictionRunsMillis: 60000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    minEvictableIdleTimeMillis: 300000  # 配置一个连接在池中最小生存的时间，单位是毫秒
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: false # 打开PSCache，并且指定每个连接上PSCache的大小
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: logback
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 server:
   context-path: /api
 eureka:
