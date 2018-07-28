@@ -4,6 +4,8 @@ spring:
   output:
      ansi:
        enabled: ALWAYS
+  profiles:
+      active: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: 'jdbc:mysql://192.168.88.190/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;characterSetResults=utf8&amp;amp;zeroDateTimeBehavior=convertToNull'
