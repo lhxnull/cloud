@@ -1,0 +1,45 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config
+  profiles:
+    active: @project.env@
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wsdl-king/cloud.git
+          clone-on-start: true
+          #完整搜索路径,目前没有考虑运维人员层面，没有从程序单独出来
+          search-paths: /config/src/main/resources/config-resource*
+          #分支
+      label: master
+      #支持的访问格式
+      #/{name}/{profiles:.*[^-].*}
+      #/{name}/{profiles}/{label:.*}
+      #/{name}-{profiles}.properties
+      #/{label}/{name}
+      #/{profiles}.properties
+      #/{name}-{profiles}.json
+      #/{label}/{name}-{profiles}.json(yml)
+eureka:
+  client:
+        serviceUrl:
+          defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+---
+spring:
+  profiles: dev
+  output:
+     ansi:
+       enabled: ALWAYS
+
+---
+spring:
+  profiles: prod
+  output:
+     ansi:
+       enabled: ALWAYS

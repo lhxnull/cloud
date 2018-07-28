@@ -24,6 +24,7 @@
         <module>producer</module>
         <module>customer</module>
         <module>common</module>
+        <module>config</module>
     </modules>
 
     <properties>
@@ -59,10 +60,17 @@
         </dependency>
 
 
+        <!--自定义配合属性-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
+         <!--cloud-config-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+
 
         <!--json包 -->
         <dependency>
