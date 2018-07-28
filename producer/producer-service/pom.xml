@@ -13,4 +13,12 @@
     <artifactId>producer-service</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.qws</groupId>
+            <artifactId>producer-entity</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    
 </project>

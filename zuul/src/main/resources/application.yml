@@ -48,6 +48,9 @@ security:
 zuul:
   addHostHeader: true
   routes:
-    sinogold-message:
+     producer:
       service-id: producer
       path: /producer/**
+     customer:
+      service-id: customer
+      path: /customer/**

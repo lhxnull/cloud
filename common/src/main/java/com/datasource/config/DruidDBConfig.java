@@ -101,7 +101,7 @@ public class DruidDBConfig {
         try {
             datasource.setFilters(filters);
         } catch (SQLException e) {
-            LOGGER.error("druid configuration initialization filter : {0}", e);
+            LOGGER.error("druid configuration initialization com.qws.zuul.filter : {0}", e);
         }
         datasource.setConnectionProperties(connectionProperties);
 

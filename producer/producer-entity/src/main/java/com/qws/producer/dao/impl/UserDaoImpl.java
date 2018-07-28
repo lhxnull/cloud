@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User selectById(Integer id) {
-        String sql ="select *1  from qws_user  where id = ?";
+        String sql ="select *  from qws_user  where id = ?";
         return  jdbcTemplate.queryForObject(sql,new Object[]{id} ,new BeanPropertyRowMapper<>(User.class));
     }
 }

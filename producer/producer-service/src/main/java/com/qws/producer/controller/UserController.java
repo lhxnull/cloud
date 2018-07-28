@@ -1,9 +1,9 @@
 package com.qws.producer.controller;
 
-import com.qws.producer.service.DepartmentService;
 import com.qws.producer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,23 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    private final  UserService userService;
-    private final DepartmentService departmentService;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserService userService, DepartmentService departmentService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.departmentService = departmentService;
     }
 
-    @GetMapping("/findOne")
-    public Object findOne(){
-        return  userService.selectById(1);
+    @GetMapping("/findOne/{id}")
+    public Object findOne( @PathVariable("id") Integer id){
+        return  userService.selectById(id);
     }
 
-    @GetMapping("/test")
-    public Object dd(){
-        departmentService.updateById();
-        return  1;
-    }
 }
