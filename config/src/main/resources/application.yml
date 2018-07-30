@@ -13,7 +13,7 @@ spring:
           uri: https://github.com/wsdl-king/cloud.git
           clone-on-start: true
           #完整搜索路径,目前没有考虑运维人员层面，没有从程序单独出来
-          search-paths: /config/src/main/resources/config-resource*
+          search-paths: /config/src/main/resources/config-resources*
           #分支
       label: master
       #支持的访问格式

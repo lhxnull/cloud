@@ -1,0 +1,22 @@
+
+
+#断路由
+feign:
+  hystrix:
+    enabled: true
+##timeout config,Hystrix默认的超时时间是1秒，如果超过这个时间尚未响应，
+#将会进入fallback代码。而首次请求往往会比较慢（因为Spring的懒加载机制，要实例化一些类），
+#这个响应时间可能就大于1秒了
+#该配置是让Hystrix的超时时间改为10秒
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+logging:
+  level:
+    com.qws.producer.feign.ProducerFeign: debug
