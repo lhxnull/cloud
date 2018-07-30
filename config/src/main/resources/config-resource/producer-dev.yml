@@ -10,7 +10,7 @@ spring:
     username: '@db.username@'
     password: '@db.password@'
     type: com.alibaba.druid.pool.DruidDataSource
-    initialSize: "@db.initialSize@" # 初始化大小
+    initialSize: @db.initialSize@ # 初始化大小
     minIdle: "@db.minIdle@"
     maxActive: '@db.maxActive@'
     maxWait: '@db.maxWait@' # 配置获取连接等待超时的时间
